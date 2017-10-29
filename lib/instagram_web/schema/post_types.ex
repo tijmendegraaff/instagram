@@ -13,6 +13,9 @@ defmodule InstagramWeb.Schema.PostTypes do
       field :user, non_null(:user) do
           resolve &Resolvers.Post.user_for_photo/3
       end
+      field :likes_user, non_null(:user) do
+          resolve &Resolvers.Post.users_like_for_photo/3
+      end
     end
   
     object :tag do

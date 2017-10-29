@@ -7,6 +7,8 @@ defmodule Instagram.Post.Photo do
 
     many_to_many :tags, Instagram.Post.Tag, join_through: "photos_taggings"
 
+    many_to_many :likes, Instagram.Reaction.LikePhoto, join_through: "likes_photos"
+
     belongs_to :user, Instagram.Account.User
 
     timestamps()

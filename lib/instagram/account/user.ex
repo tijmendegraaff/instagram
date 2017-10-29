@@ -9,6 +9,8 @@ defmodule Instagram.Account.User do
 
     has_many :photos, Instagram.Post.Photo
 
+    many_to_many :likes, Instagram.Reaction.LikePhoto, join_through: "likes_photos"
+
     timestamps()
   end
 

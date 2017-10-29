@@ -20,4 +20,8 @@ defmodule InstagramWeb.Resolvers.Post do
     def user_for_photo(photo, _, _) do
       {:ok, Post.user_for_photo(photo)}
     end
+
+    def users_like_for_photo(photo, _, _) do
+      {:ok, Post.users_like_for_photo(photo)}
+    end
 end

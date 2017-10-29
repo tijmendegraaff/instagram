@@ -21,6 +21,11 @@ defmodule Instagram.Post do
     |> Repo.one
   end
 
+  def users_like_for_photo(photo) do
+    Ecto.assoc(photo, :users_likes)
+    |> Repo.all
+  end
+
   def create_photo(attrs \\ %{}) do
     %Photo{}
     |> Photo.changeset(attrs)
