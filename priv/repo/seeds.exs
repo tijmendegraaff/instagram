@@ -1,6 +1,8 @@
-alias Instagram.{Post, Repo}
+alias Instagram.{Post, Repo, Account}
 
 fake_photos = 10
+
+fake_users = 5
 
 fake_tag = [
     "Summer",
@@ -10,6 +12,12 @@ fake_tag = [
     "SundayNight",
     "MondayMorning",
 ]
+
+# Users
+for _ <- 1..fake_users do
+    %Account.User{username: Faker.Internet.user_name(), avatar: Faker.Internet.image_url()}
+    |> Repo.insert!
+end
 # Tags
 for name <- fake_tag do
     %Post.Tag{name: name}
@@ -20,7 +28,8 @@ end
 for _ <- 1..fake_photos do
     %Post.Photo{
         image_url: Faker.Internet.image_url(),
-        tags: Enum.take_random(Repo.all(Post.Tag), Enum.random(1..4))
+        tags: Enum.take_random(Repo.all(Post.Tag), Enum.random(1..4)),
+        user_id: Enum.random(1..fake_users)
     }
     |> Repo.insert!
 end
