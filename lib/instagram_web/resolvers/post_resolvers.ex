@@ -14,6 +14,10 @@ defmodule InstagramWeb.Resolvers.Post do
     end
 
     def tags_for_photos(photo, _, _) do
-        {:ok, Post.tags_for_photo(photo)}
+      {:ok, Post.tags_for_photo(photo)}
+    end
+
+    def user_for_photo(photo, _, _) do
+      {:ok, Post.user_for_photo(photo)}
     end
 end

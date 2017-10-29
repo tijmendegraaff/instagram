@@ -10,6 +10,9 @@ defmodule InstagramWeb.Schema.PostTypes do
       field :tags, non_null(list_of(:tag)) do
         resolve &Resolvers.Post.tags_for_photos/3
       end
+      field :user, non_null(:user) do
+          resolve &Resolvers.Post.user_for_photo/3
+      end
     end
   
     object :tag do
