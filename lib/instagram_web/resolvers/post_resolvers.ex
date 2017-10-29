@@ -12,4 +12,8 @@ defmodule InstagramWeb.Resolvers.Post do
     def photo(_, %{id: id}, _) do
       {:ok, Post.get_photo!(id)}
     end
+
+    def tags_for_photos(photo, _, _) do
+        {:ok, Post.tags_for_photo(photo)}
+    end
 end
