@@ -8,4 +8,14 @@ defmodule InstagramWeb.Router do
   scope "/api", InstagramWeb do
     pipe_through :api
   end
+
+  scope "/" do
+
+    forward "/api/graphql", Absinthe.Plug,
+      schema: InstagramWeb.Schema
+    
+    forward "/api/graphiql", Absinthe.Plug.GraphiQL,
+      schema: InstagramWeb.Schema,
+      interface: :simple
+  end
 end
