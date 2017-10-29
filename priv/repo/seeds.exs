@@ -1,11 +1,8 @@
-# Script for populating the database. You can run it as:
-#
-#     mix run priv/repo/seeds.exs
-#
-# Inside the script, you can read and write to any of your
-# repositories directly:
-#
-#     Instagram.Repo.insert!(%Instagram.SomeSchema{})
-#
-# We recommend using the bang functions (`insert!`, `update!`
-# and so on) as they will fail if something goes wrong.
+alias Instagram.{Post, Repo}
+
+fake_photos = 10
+
+for _ <- 1..fake_photos do
+    %Post.Photo{image_url: Faker.Internet.image_url()}
+    |> Repo.insert!
+end
